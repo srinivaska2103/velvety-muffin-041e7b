@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/family.png">
+    <title>Education - FamilyFirst </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: { 
+                        brand: { 50: '#f5f3ff', 500: '#6366f1', 600: '#4f46e5', 900: '#1e1b4b' },
+                        edu: '#f59e0b',
+                        medical: '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body, nav, section, .card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: slideUp 0.5s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased">
+
+<nav class="bg-white dark:bg-gray-800 shadow-md fixed w-full z-[100] transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20">
+            <div class="flex-shrink-0 flex items-center gap-2 group cursor-pointer" onclick="window.location.href='index.html'">
+                <i class="fa-solid fa-people-roof text-brand-600 text-3xl transition-transform group-hover:scale-110"></i>
+                <span class="font-serif text-2xl font-bold text-gray-900 dark:text-white">FamilyFirst</span>
+            </div>
+
+            <div class="hidden xl:flex items-center space-x-6 rtl:space-x-reverse">
+                <a href="index.html" class="nav-link hover:text-brand-600 dark:hover:text-brand-400 font-medium py-7 border-b-2 border-transparent transition-all">Home1</a>
+                <a href="home2.html" class="nav-link hover:text-brand-600 dark:hover:text-brand-400 font-medium py-7 border-b-2 border-transparent transition-all">Home2</a>
+                
+                <div class="relative group">
+                    <button id="parenting-btn" class="flex items-center gap-2 hover:text-brand-600 dark:hover:text-brand-400 font-medium py-7 transition-colors focus:outline-none">
+                        Parenting
+                        <i class="fa-solid fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform duration-300"></i>
+                    </button>
+                    <div class="absolute left-0 rtl:left-auto rtl:right-0 top-full hidden group-hover:block w-[480px] bg-white dark:bg-gray-800 shadow-2xl rounded-2xl border border-gray-100 dark:border-gray-700 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
+                        <div class="p-4 grid grid-cols-2 gap-3">
+                            <a href="parent.html" class="nav-link block px-4 py-3 rounded-xl font-medium dark:text-white">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-pink-100 dark:bg-pink-900/40 flex items-center justify-center text-pink-600"><i class="fa-solid fa-person-breastfeeding"></i></div>
+                                <div><span class="block text-sm font-bold dark:text-white">New Parents</span></div>
+                            </a>
+                            <a href="education.html" class="nav-link block px-4 py-3 rounded-xl font-medium dark:text-white">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-600"><i class="fa-solid fa-baby"></i></div>
+                                <div><span class="block text-sm font-bold dark:text-white">Baby Care</span></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="development.html" class="nav-link hover:text-brand-600 dark:hover:text-brand-400 font-medium py-7 border-b-2 border-transparent transition-all">Development</a>
+                <a href="health.html" class="nav-link hover:text-brand-600 dark:hover:text-brand-400 font-medium py-7 border-b-2 border-transparent transition-all">Health</a>
+                <a href="education.html" class="nav-link hover:text-brand-600 dark:hover:text-brand-400 font-medium py-7 border-b-2 border-transparent transition-all">Education</a>
+                                <a href="pricing.html" class="nav-link hover:text-brand-600 dark:hover:text-brand-400 font-medium py-7 border-b-2 border-transparent transition-all">Pricing</a>
+
+                <div class="relative group">
+                    <button class="flex items-center gap-2 text-brand-600 dark:text-brand-400 font-bold py-7 transition-all focus:outline-none">
+                        <span>User</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform duration-300"></i>
+                    </button>
+                    <div class="absolute right-0 rtl:right-auto rtl:left-0 top-full hidden group-hover:block w-48 bg-white dark:bg-gray-800 shadow-2xl rounded-2xl border border-gray-100 dark:border-gray-700 overflow-hidden z-50">
+                        <div class="p-2">
+                            <a href="user.html" class="nav-link block px-4 py-3 rounded-xl font-medium dark:text-white">Dashboard</a>
+                            <hr class="my-1 border-gray-100 dark:border-gray-700">
+                            <!-- <a href="/login.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-red-50 text-red-600 transition-colors text-sm font-bold"><i class="fa-solid fa-power-off"></i> Logout</a> -->
+                        </div>
+                    </div>
+                </div>
+                                <a href="contact.html" class="nav-link hover:text-brand-600 dark:hover:text-brand-400 font-medium py-7 border-b-2 border-transparent transition-all">Contact</a>
+
+
+                <div class="flex items-center space-x-3 rtl:space-x-reverse border-l pl-4 border-gray-200 dark:border-gray-700">
+                    <button onclick="toggleTheme()" class="text-gray-500 dark:text-gray-400 hover:scale-110 transition-transform"><i id="theme-icon" class="fa-solid fa-moon text-xl"></i></button>
+                    <button onclick="toggleRTL()" class="text-[10px] border border-gray-300 dark:border-gray-600 rounded px-2 py-1 font-black dark:text-white uppercase">RTL</button>
+                </div>
+                <a href="login.html" class="bg-brand-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-brand-700 transition-all">Get Pro</a>
+            </div>
+
+            <div class="xl:hidden flex items-center gap-4">
+                <button onclick="toggleTheme()" class="text-gray-500 dark:text-white"><i id="theme-icon-mobile" class="fa-solid fa-moon text-xl"></i></button>
+                <button onclick="toggleMenu()" class="text-gray-900 dark:text-white"><i class="fa-solid fa-bars-staggered text-2xl"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700 p-4 space-y-2 shadow-xl max-h-[85vh] overflow-y-auto">
+        <a href="index.html" class="nav-link block px-4 py-3 rounded-xl font-medium dark:text-white">Home1</a>
+        <a href="home2.html" class="nav-link block px-4 py-3 rounded-xl font-medium dark:text-white">Home2</a>
+        
+        <div class="space-y-1">
+            <button onclick="toggleMobileDropdown()" class="w-full flex justify-between items-center px-4 py-3 text-gray-900 dark:text-white font-medium rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                Parenting
+                <i id="mobile-chevron" class="fa-solid fa-chevron-down text-xs transition-transform duration-300"></i>
+            </button>
+            <div id="parenting-dropdown-mobile" class="hidden space-y-1 bg-gray-50 dark:bg-gray-900/30 rounded-2xl p-2 mx-2 border border-slate-100 dark:border-slate-700">
+                <a href="parent.html" class="nav-link block px-4 py-3 rounded-xl font-medium dark:text-white">New Parents</a>
+                <a href="education.html" class="nav-link block px-4 py-3 rounded-xl font-medium dark:text-white">Baby Care</a>
+            </div>
+        </div>
+
+        <a href="development.html" class="nav-link block px-4 py-3 rounded-xl font-medium dark:text-white">Development</a>
+        <a href="health.html" class="nav-link block px-4 py-3 rounded-xl font-medium dark:text-white">Health</a>
+        <a href="education.html" class="nav-link block px-4 py-3 rounded-xl font-medium dark:text-white">Education</a>
+                <a href="pricing.html" class="nav-link block px-4 py-3 rounded-xl font-medium dark:text-white">Pricing</a>
+
+        <div class="border-t dark:border-gray-700 pt-2">
+            <a href="user.html" class="nav-link w-full flex items-center gap-2 px-4 py-3 text-brand-600 dark:text-brand-400 font-bold rounded-xl">
+                <i class="fa-solid fa-gauge-high"></i> User Dashboard
+            </a>
+            <!-- <a href="/login.html" class="block px-4 py-3 text-sm font-bold text-red-500 rounded-xl">Logout</a> -->
+        </div>
+        <a href="contact.html" class="nav-link block px-4 py-3 rounded-xl font-medium dark:text-white">Contact</a>
+
+        <div class="px-4 pt-4">
+            <button onclick="toggleRTL()" class="w-full text-center border dark:border-gray-600 py-3 rounded-xl dark:text-white font-bold text-sm">Switch RTL/LTR</button>
+            <a href="login.html" class="block text-center bg-brand-600 text-white py-4 rounded-2xl font-bold mt-4 shadow-lg shadow-brand-500/30">Upgrade to Pro</a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        navLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            // Check if URL matches the link
+            const isActive = currentPath === linkHref || (currentPath === '/' && linkHref === 'index.html') || currentPath.endsWith(linkHref);
+
+            if (isActive) {
+                // Desktop Style
+                link.classList.add('text-brand-600', 'dark:text-brand-400', 'font-bold', 'border-brand-600');
+                link.classList.remove('border-transparent');
+
+                // Mobile & Tablet Active Styling (Fixed BG logic)
+                if (link.closest('#mobile-menu')) {
+                    link.classList.add('bg-brand-100', 'dark:bg-slate-700', 'text-brand-700', 'dark:text-brand-400', 'shadow-sm');
+                }
+
+                // Dropdown Parent Bold State
+                const dropdownParent = link.closest('.group')?.querySelector('button') || link.closest('#parenting-dropdown-mobile')?.previousElementSibling;
+                if (dropdownParent) dropdownParent.classList.add('text-brand-600', 'dark:text-brand-400', 'font-black');
+            }
+        });
+    });
+
+    function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+    function toggleMobileDropdown() {
+        document.getElementById('parenting-dropdown-mobile').classList.toggle('hidden');
+        document.getElementById('mobile-chevron').classList.toggle('rotate-180');
+    }
+</script>
+
+<style>
+    @media (min-width: 1280px) {
+        .xl\:flex .nav-link.border-brand-600 { border-bottom-width: 2px; }
+    }
+    .nav-link { transition: all 0.2s ease-in-out; }
+</style>
+
+    <section class="relative pt-48 pb-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div class="text-center lg:text-left rtl:lg:text-right">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+                    <i class="fa-solid fa-sparkles"></i> Rated #1 Parenting App of 2026
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-8">
+                    Your Child's <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-400">Potential,</span> <br> Quantified.
+                </h1>
+                <p class="text-xl text-slate-500 dark:text-slate-400 mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                    Ditch the guesswork. We combine clinical research with AI to track your child's growth, identify hidden talents, and secure their health records in one secure hub.
+                </p>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                    <button class="bg-brand-600 text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-brand-700 transition shadow-2xl shadow-brand-500/40">Launch My Child's Roadmap</button>
+                    <button class="bg-white dark:bg-slate-900 border dark:border-slate-800 px-10 py-4 rounded-2xl font-bold text-lg">Watch 2-Min Demo</button>
+                </div>
+                <div class="mt-10 flex items-center justify-center lg:justify-start gap-4 opacity-60">
+                    <div class="flex -space-x-3">
+                   <img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900" src="assets/h1wellnes1" alt="">
+                    <img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900" src="assets/h1wellnes2" alt="">
+                     <img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900" src="assets/h1wellnes3" alt="">
+
+                    </div>
+                    <p class="text-sm font-medium">Join 50k+ proactive parents</p>
+                </div>
+            </div>
+            <div class="relative group">
+                <div class="absolute -inset-10 bg-brand-500/10 rounded-full blur-[100px]"></div>
+                <div class="relative bg-white dark:bg-slate-900 p-4 rounded-[3.5rem] shadow-2xl border-4 border-white dark:border-slate-800 transition-transform duration-700 hover:rotate-0 rotate-2">
+                    <img src="assets/edhero" class="rounded-[3rem]" alt="Interactive Parenting">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white dark:bg-slate-900 border-y border-slate-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-4xl font-bold mb-4">Total Family <span class="text-brand-600">Harmony</span></h2>
+                <p class="text-slate-500">Clinical insights meet everyday parenting. Explore our three core pillars.</p>
+            </div>
+
+            <div class="flex overflow-x-auto gap-4 no-scrollbar mb-16 lg:justify-center">
+                <button onclick="openHub(event, 'development')" class="hub-btn active px-10 py-4 rounded-2xl font-bold border-2 border-brand-600 bg-brand-600 text-white shadow-lg transition-all">
+                    <i class="fa-solid fa-baby mr-2"></i> The Neural Path
+                </button>
+                <button onclick="openHub(event, 'education')" class="hub-btn px-10 py-4 rounded-2xl font-bold border-2 border-slate-100 dark:border-slate-800 transition-all">
+                    <i class="fa-solid fa-rocket mr-2 text-edu"></i> STEM & Talent
+                </button>
+                <button onclick="openHub(event, 'health')" class="hub-btn px-10 py-4 rounded-2xl font-bold border-2 border-slate-100 dark:border-slate-800 transition-all">
+                    <i class="fa-solid fa-heart-pulse mr-2 text-medical"></i> Bio-Sync Health
+                </button>
+            </div>
+
+            <div id="development" class="tab-content active">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-8">
+                        <h3 class="text-4xl font-bold">Predicting the next <br><span class="text-brand-600">Cognitive Leap.</span></h3>
+                        <p class="text-lg text-slate-500 leading-relaxed">Our clinical engine monitors 142 biological and behavioral markers to tell you exactly what your child is ready to learn next.</p>
+                        <div class="p-6 bg-brand-50 dark:bg-brand-900/20 rounded-[2rem] border-l-8 border-brand-600">
+                            <h4 class="font-bold text-xl mb-2">Age 4-6 Month Window:</h4>
+                            <p class="text-slate-600 dark:text-slate-400">Peak neuroplasticity for sound recognition. We provide the specific auditory games to boost vocabulary early.</p>
+                        </div>
+                    </div>
+                    <div class="bg-brand-900 p-12 rounded-[3.5rem] shadow-2xl relative overflow-hidden">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-500 rounded-full blur-3xl opacity-20"></div>
+                        <h4 class="text-white font-bold text-xl mb-8 flex justify-between">
+                            Developmental ROI 
+                            <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Live Stats</span>
+                        </h4>
+                        <div class="space-y-10">
+                            <div>
+                                <div class="flex justify-between text-white text-xs font-bold uppercase mb-3">Fine Motor Strength</div>
+                                <div class="w-full bg-white/10 h-3 rounded-full overflow-hidden">
+                                    <div class="bg-brand-500 h-full w-[82%] rounded-full shadow-[0_0_15px_#6366f1]"></div>
+                                </div>
+                            </div>
+                            <div class="pt-4 border-t border-white/10 text-center">
+                                <p class="text-brand-200 text-sm mb-6">"Your child is in the top 12% for age-specific motor refinement."</p>
+                                <button class="w-full bg-white text-brand-900 py-4 rounded-2xl font-bold hover:bg-brand-50 transition">View Clinical Roadmap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="education" class="tab-content">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-6">
+                        <h3 class="text-4xl font-bold">Future-Proofing <br><span class="text-edu">Their Skills.</span></h3>
+                        <p class="text-lg text-slate-500">In an AI world, logic and creativity are the only currencies. Our curriculum focuses on "Computational Thinking" disguised as play.</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-6 bg-slate-50 dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-800 text-center hover:border-edu transition">
+                                <i class="fa-solid fa-terminal text-edu text-3xl mb-4"></i>
+                                <h4 class="font-bold">Logic Coding</h4>
+                            </div>
+                            <div class="p-6 bg-slate-50 dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-800 text-center hover:border-edu transition">
+                                <i class="fa-solid fa-palette text-edu text-3xl mb-4"></i>
+                                <h4 class="font-bold">Creative Arts</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative rounded-[3.5rem] overflow-hidden shadow-2xl group">
+                        <img src="assets/ed1" class="group-hover:scale-110 transition duration-700" alt="Learning Pathways">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-10">
+                            <button class="bg-edu text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-lg">Start Learning Module</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="health" class="tab-content">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-8">
+                        <h3 class="text-4xl font-bold text-medical">Clinical Health Hub.</h3>
+                        <p class="text-lg text-slate-500">24/7 access to AI-verified symptom tracking and growth analytics. We sync directly with your pediatric portal.</p>
+                        <div class="flex items-center gap-6 p-6 bg-medical/5 rounded-[2rem] border-2 border-medical/20">
+                            <div class="w-16 h-16 bg-medical text-white rounded-2xl flex items-center justify-center text-3xl"><i class="fa-solid fa-stethoscope"></i></div>
+                            <div>
+                                <h4 class="font-bold text-xl">Symptom AI</h4>
+                                <p class="text-slate-500">Instant triage for fevers, rashes, and more.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-10 bg-slate-50 dark:bg-slate-800 rounded-[3.5rem] border border-slate-200 dark:border-slate-700 shadow-sm">
+                        <div class="flex justify-between items-center mb-8">
+                            <h4 class="font-bold">Growth Velocity (Age 2)</h4>
+                            <span class="text-xs bg-medical text-white px-3 py-1 rounded-full font-bold">Safe Zone</span>
+                        </div>
+                         <div class="h-48 flex items-end gap-2 mb-6">
+                            <div class="w-1/4 bg-medical/20 h-[30%] rounded-t-lg"></div>
+                            <div class="w-1/4 bg-medical/40 h-[50%] rounded-t-lg"></div>
+                            <div class="w-1/4 bg-medical/60 h-[70%] rounded-t-lg"></div>
+                            <div class="w-1/4 bg-medical h-[90%] rounded-t-lg shadow-[0_0_20px_#10b981]"></div>
+                         </div>
+                         <p class="text-center text-sm font-bold text-slate-400">Vaccination Sync: 100% Up to date</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="py-32 px-6">
+        <div class="max-w-5xl mx-auto bg-brand-900 rounded-[4rem] p-12 md:p-24 text-center text-white relative overflow-hidden shadow-[0_40px_100px_-15px_rgba(79,70,229,0.5)]">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-brand-600 rounded-full blur-[120px] opacity-30"></div>
+            <h2 class="text-4xl md:text-7xl font-extrabold mb-8 relative z-10 leading-tight tracking-tighter">Your Parenting <br> Just Got Smarter.</h2>
+            <p class="text-xl text-indigo-200 mb-12 relative z-10 max-w-2xl mx-auto leading-relaxed">Start your 14-day Pro trial today. Join a community of parents committed to raising the next generation of innovators.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
+                <a href="signin.html">
+                            <button class="bg-brand-600 text-white px-12 py-5 rounded-2xl font-extrabold text-xl hover:bg-brand-700 hover:scale-105 transition shadow-xl">Get Pro Access Now</button>
+
+                </a>
+                <a href="pricing.html">
+                <button class="bg-white/5 border border-white/20 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-white/10 transition backdrop-blur-sm">View Free Plan</button>
+
+                </a>
+            </div>
+            <p class="mt-8 text-xs text-indigo-400 uppercase tracking-widest font-black">No Credit Card Required • HIPAA Compliant • Trusted by MDs</p>
+        </div>
+    </section>
+
+     <footer class="bg-gray-900 text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <a href="index.html">
+ <div>
+<i class="fa-solid fa-people-roof text-brand-600 text-3xl transition-transform group-hover:scale-110"></i>
+
+                    <h3 class="font-serif text-2xl font-bold mb-6">FamilyFirst</h3>
+                    </div>
+                    </a>
+                   
+                 
+                    <p class="text-gray-400 mb-6">The world's most trusted resource for intentional parenting and family success.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-xl hover:text-brand-500"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="text-xl hover:text-brand-500"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="text-xl hover:text-brand-500"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="text-xl hover:text-brand-500"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white">Home1</a></li>
+                        <li><a href="home2.html" class="hover:text-white">Home2</a></li>
+                        <li><a href="health.html" class="hover:text-white">Health & Wellness</a></li>
+                        <li><a href="development.html" class="hover:text-white">Child Development</a></li>
+                        <li><a href="education.html" class="hover:text-white">Education & STEM</a></li>
+                        <li><a href="parent.html" class="hover:text-white">Parenting Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Community</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Parenting Forums</a></li>
+                        <li><a href="#" class="hover:text-white">Local Meetups</a></li>
+                        <li><a href="#" class="hover:text-white">Ask an Expert</a></li>
+                        <li><a href="#" class="hover:text-white">Real Stories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Newsletter</h4>
+                    <p class="text-gray-400 text-sm mb-4">Get the "Weekly Parent" digest directly in your inbox.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Email address" class="bg-gray-800 border-none rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-brand-500">
+                        <button class="bg-brand-600 px-4 py-2 rounded-lg hover:bg-brand-700 transition"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                &copy; 2026 FamilyFirst AI. All rights reserved. <br>
+                
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcons(isDark);
+        }
+
+        function updateIcons(isDark) {
+            const icon = document.getElementById('theme-icon');
+            const iconMob = document.getElementById('theme-icon-mobile');
+            const themeClass = isDark ? 'fa-sun' : 'fa-moon';
+            const removeClass = isDark ? 'fa-moon' : 'fa-sun';
+            [icon, iconMob].forEach(i => {
+                i.classList.remove(removeClass);
+                i.classList.add(themeClass);
+            });
+        }
+
+        function toggleRTL() {
+            const html = document.documentElement;
+            html.getAttribute('dir') === 'rtl' ? html.setAttribute('dir', 'ltr') : html.setAttribute('dir', 'rtl');
+        }
+
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // Init Theme
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            updateIcons(true);
+        }
+    </script>
+    <script>
+    function toggleMobileDropdown() {
+        const dropdown = document.getElementById('parenting-dropdown-mobile');
+        const chevron = document.getElementById('mobile-chevron');
+        
+        dropdown.classList.toggle('hidden');
+        chevron.classList.toggle('rotate-180');
+    }
+    function toggleUserMobile() {
+    const menu = document.getElementById('user-dropdown-mobile');
+    const chevron = document.getElementById('user-mobile-chevron');
+    menu.classList.toggle('hidden');
+    chevron.classList.toggle('rotate-180');
+}
+</script>
+    
+
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('theme-icon').className = isDark ? 'fa-solid fa-sun text-yellow-400' : 'fa-solid fa-moon text-slate-500';
+        }
+
+        function toggleRTL() {
+            const html = document.documentElement;
+            html.getAttribute('dir') === 'rtl' ? html.setAttribute('dir', 'ltr') : html.setAttribute('dir', 'rtl');
+        }
+
+        function openHub(evt, hubName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            const btns = document.querySelectorAll('.hub-btn');
+            btns.forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white', 'border-brand-600', 'shadow-lg');
+                btn.classList.add('border-slate-100', 'dark:border-slate-800');
+            });
+
+            document.getElementById(hubName).classList.add('active');
+            evt.currentTarget.classList.add('bg-brand-600', 'text-white', 'border-brand-600', 'shadow-lg');
+        }
+
+        // Initialize Theme from Storage
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.getElementById('theme-icon').className = 'fa-solid fa-sun text-yellow-400';
+        }
+    </script>
+</body>
+</html>
